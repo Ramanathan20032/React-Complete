@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "episode_02 of namste react",
   "scripts": {
+    "start": "parcel index.html",
+    "build" : "parcel build index.html",
     "test": "jest"
   },
   "author": "",
