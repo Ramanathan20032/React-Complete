@@ -1,9 +1,33 @@
-#heading{
-    color: navy;
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    background-color: #9db1ae;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.component{
-    color: mediumaquamarine;
+
+.logo img{
+    width: 50px;
+    height: auto;
 }
-.component1{
-    color: mediumslateblue;
+
+.search-bar input{
+    width: 400px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.user-icon{
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.user-icon .user-image{
+    border-radius: 50%;
+    width: 55%;
+    height: 55%;
 }
