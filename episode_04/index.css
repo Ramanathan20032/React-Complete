@@ -52,8 +52,7 @@
 }
 .name-cuisines{
     text-align: center;
-    color: rgba(255, 85, 0, 0.806);
-    
+    color: rgb(110, 122, 54);
 }
 .rating-eta{
     padding: 10px;
@@ -68,6 +67,13 @@
     align-items: center;
 }
 .btn{
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(88, 221, 108);
     width: 50px;
-    height: 30px;
+    height: 25px;
+}
+.btn:hover{
+    background-color: rgb(64, 192, 83);
+    cursor: pointer;
 }
