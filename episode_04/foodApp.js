@@ -1632,7 +1632,7 @@ const restaurantList = [
 
 const RestaurentCard = (props) => {
   const { resData } = props;
-  const { name, cuisines, costForTwo, avgRating } = resData?.info;
+  const { name, cuisines, costForTwo, avgRating } = resData?.info;     // spread operator
   const { deliveryTime } = resData?.info?.sla;
 
   return (
