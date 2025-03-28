@@ -1,0 +1,25 @@
+{
+  "name": "episode_07",
+  "version": "1.0.0",
+  "description": "React Router DOM",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.13.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.22.1"
+  },
+  "browserslist": [
+    "last 2 version"
+  ],
+  "devDependencies": {
+    "process": "^0.11.10"
+  }
+}
