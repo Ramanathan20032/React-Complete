@@ -6,7 +6,7 @@ const About = () => {
     <>
       <h1>About Us</h1>
       <p>About Page Content</p>
-      <User name={"Functional Component"}/>
+      {/* <User name={"Functional Component"}/> */}
       <UserClass name={"Class Component"}/>
     </>
   )
