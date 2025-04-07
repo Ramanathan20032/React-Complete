@@ -17,6 +17,9 @@ class UserClass extends React.Component {
     console.log("Child Constructor")
   }
 
+
+  // react allows lifeCycle methods (componentDidMount) allows to mark it as async()
+  // will call only on the first render of the corresponding page
   async componentDidMount(){
     console.log("Child Component Did Mount")
     const data = await fetch("https://api.github.com/users/ramanathan20032")
@@ -26,6 +29,23 @@ class UserClass extends React.Component {
     this.setState({
       userInfo : json
     })
+
+    // Each Function & Method with in the class has (this.) 
+    this.timer = setInterval(() => {
+      console.log("Set Interval Class")
+    }, 1000)
+  }
+
+  // will call when the state updates - has a seperate render cycle
+  componentDidUpdate(){
+    console.log("Component Did Update")
+  }
+
+  // will call the corresponding component get replaced by other component in the UI
+  // unmount stage
+  componentWillUnmount(){
+    clearInterval(this.timer)
+    console.log("Component Will UnMount")
   }
 
   render() {
