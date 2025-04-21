@@ -1,12 +1,24 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import About from "./components/About";
+// ! instead of loading all the component with in the single bundler 
+// ! make then into smaller bundler
+// import About from "./components/About";
+// import Grocery from "./components/Grocery";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+
+
+// ! instead of loading all the component with in the single (JS) bundler 
+// ! make them into smaller bundler
+// ? chunking, Dynamic Bundling, lazy Loading
+const Grocery = lazy(() => {
+  return import("./components/Grocery");
+})
+const About = lazy(() => import("./components/About"))
 
 // Root Component
 const AppLayout = () => {
@@ -29,7 +41,19 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<h2>Loading About...</h2>}>
+            <About/>
+          </Suspense>
+        ),
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h2>Loading Grocery...</h2>}>
+            <Grocery/>
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
