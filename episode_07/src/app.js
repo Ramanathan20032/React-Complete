@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./utils/UserContext";
 
 
 // ! instead of loading all the component with in the single (JS) bundler 
@@ -20,13 +21,35 @@ const Grocery = lazy(() => {
 })
 const About = lazy(() => import("./components/About"))
 
+
 // Root Component
 const AppLayout = () => {
+
+  // ! Modifying the UserContext
+  // ? Modifying the UserContext to store the data in the context object.
+  const [userName, setUserName] = useState(null);
+  useEffect(() => {
+    // ? make a api call to get the user name
+    const data = {
+      name : "Ram"
+    }
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet/>
-    </div>
+    // initially will have the default value
+    // by modifying the context name with UserContext.Provider(context value)
+    // ! can also pass the set function to the context value.
+    <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+      {/* ! context value will be the "Ram" */}
+      <div className="app">
+        <UserContext.Provider value={{loggedInUser: "Bradman"}}>
+          {/* ! context value will be the "Bradman" */}
+          <Header />
+        </UserContext.Provider>
+        <Outlet/>
+      </div>
+    </UserContext.Provider>
   );
 };
 

@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 // Header Component
 const Header = () => {
   const [btnName, setBtnName] = useState("log in");
   const onlineStatus = useOnlineStatus();
+
+  // ! useContext
+  // ? useContext is used to access the data from the context object.
+  const {loggedInUser} = useContext(UserContext);
 
   console.log("Header Component Called");
 
@@ -34,14 +39,16 @@ const Header = () => {
           <li className="px-3">Cart</li>
           <li className="pl-3">
             <button
-              className="bg-red-400 hover:bg-red-500 text-white px-4 pb-1 rounded-md cursor-pointer transition-all duration-300"
+              className="bg-red-400 hover:bg-red-500 text-sm text-white px-4 pb-1 rounded-md cursor-pointer transition-all duration-300"
               onClick={() => {
                 btnName === "log in"
                   ? setBtnName("log out")
                   : setBtnName("log in");
               }}
             >
-              {btnName}
+              <>
+                {btnName} <br /> {loggedInUser}
+              </>
             </button>
           </li>
         </ul>

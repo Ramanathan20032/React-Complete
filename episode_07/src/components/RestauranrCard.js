@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { CON_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 // RestaurantCard Components
 const RestaurantCard = (props) => {
+  const { loggedInUser } = useContext(UserContext);
   const { resData } = props;
   const { name, cuisines, avgRating, costForTwo, cloudinaryImageId } =
     resData?.info;
@@ -19,8 +22,27 @@ const RestaurantCard = (props) => {
       <h4>{avgRating} stars</h4>
       <h4>{costForTwo}</h4>
       <h4>{deliveryTime} Min</h4>
+      <h4>User: {loggedInUser}</h4>
     </div>
   );
+};
+
+// ! Higher Order Component - To find the restaurant card which are veg
+// ? input -> RestaurantCard  : output -> RestaurantCard with Promoted Label
+
+export const withVegPromotedLabel = (RestauranrCard) => {
+  // return a functional Component
+  return (props) => {
+    // functional component which return a piece of jsx
+    return (
+      <>
+        <label className="absolute bg-green-500 text-white rounded-md text-sm px-3 py-1 m-2 ml-3 mt-3">
+          Veg
+        </label>
+        <RestauranrCard {...props} />
+      </>
+    );
+  };
 };
 
 export default RestaurantCard;
