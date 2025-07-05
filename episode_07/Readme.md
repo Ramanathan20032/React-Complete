@@ -32,3 +32,14 @@
 
 -- npx create-jest
 -- install jsdom library [Testing Environment] if(version > 28)
+
+# to enable jsx inside the testing component
+
+-- npm i @babel/preset/react
+-- include @babel/preset/react inside babel config
+["@babel/preset-react", { runtime : "automatic" }]
+// babel preset is helping that react code to converted into normal html
+
+# install @testing-library/jest-dom
+
+-- npm i @testing-library/jest-dom
